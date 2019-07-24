@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/article-title-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-24T03:05:19.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-article-title-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/article-title-1/" class="article-date">
+  <time datetime="2019-07-24T02:40:08.081Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import<br><a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项<br>egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \ ‘<br>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r<br>开启Google BBR<br>修改sysctl配置<br>echo ‘net.core.default_qdisc=fq’ |  tee -a /etc/sysctl.conf<br>echo ‘net.ipv4.tcp_congestion_control=bbr’ | tee -a /etc/sysctl.conf<br>sysctl -p<br>检查是否加载BBR<br>lsmod | grep bbr</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/24/article-title-1/" data-id="cjygo18no0000a8ua092hrh54" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/22/article-title/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">article title</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/24/article-title-1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/22/article-title/">article title</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
