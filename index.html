@@ -181,44 +181,44 @@
       
       
         
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-首页">
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
       
       
       
         
-        <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-关于">
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
       
       
       
         
-        <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-标签">
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
       
       
       
         
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-分类">
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
   </ul>
@@ -238,6 +238,85 @@
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/GoogleBBR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hunter">
+      <meta itemprop="description" content="亮亮永远就是这么亮">
+      <meta itemprop="image" content="/images/Panda.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王亮亮">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/08/19/GoogleBBR/" class="post-title-link" itemprop="url">GoogleBBR</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-19 16:54:47 / Modified: 17:13:18" itemprop="dateCreated datePublished" datetime="2019-08-19T16:54:47+08:00">2019-08-19</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p>
+<p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p>
+<p>开启Google BBR<br>修改sysctl配置</p>
+<p>检查是否加载BBR</p>
+<p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
       
 
   <article class="post" itemscope itemtype="http://schema.org/Article">
@@ -356,11 +435,24 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives/">
+          <a href="/archives">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+        
       </div>
     
   </nav>
@@ -482,7 +574,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73字</span>
+  <span class="post-count">博客全站共543字</span>
 </div>
 
 <div class="weixin-box">
