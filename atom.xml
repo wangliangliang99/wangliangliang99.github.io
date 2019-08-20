@@ -6,11 +6,11 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-19T09:13:18.784Z</updated>
+  <updated>2019-08-19T09:15:28.374Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Hunter</name>
+    <name>Amy</name>
     
   </author>
   
@@ -21,21 +21,18 @@
     <link href="http://yoursite.com/2019/08/19/GoogleBBR/"/>
     <id>http://yoursite.com/2019/08/19/GoogleBBR/</id>
     <published>2019-08-19T08:54:47.000Z</published>
-    <updated>2019-08-19T09:13:18.784Z</updated>
+    <updated>2019-08-19T09:15:28.374Z</updated>
     
-    <content type="html"><![CDATA[<p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p><p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p><p>开启Google BBR<br>修改sysctl配置</p><p>检查是否加载BBR</p><p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>]]></content>
+    <content type="html"><![CDATA[<p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p><a id="more"></a><p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p><p>开启Google BBR<br>修改sysctl配置</p><p>检查是否加载BBR</p><p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;安装 Google BBR 加速VPS网络&lt;br&gt;在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。
-      
+      &lt;p&gt;安装 Google BBR 加速VPS网络&lt;br&gt;在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！&lt;br&gt;先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤&lt;br&gt;升级内核&lt;br&gt;Rpm –import &lt;a href=&quot;https://www.elrepo.org/RPM-GPG-KEY-elrepo.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.elrepo.org/RPM-GPG-KEY-elrepo.org&lt;/a&gt;&lt;br&gt;Rpm-Uvh &lt;a href=&quot;http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm&lt;/a&gt;&lt;br&gt;Yum –enablerepo=elrepo-kernel install kernel-ml -y&lt;br&gt;如果升级失败了就更新一下源，时间有点久需要慢慢等待。&lt;br&gt;yum update -y&lt;br&gt;运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功&lt;br&gt;设置开机默认开启项，输出结果如下&lt;/p&gt;
     
     </summary>
     
     
-      <category term="tags" scheme="http://yoursite.com/tags/tags/"/>
+      <category term="系统" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -46,14 +43,11 @@
     <published>2019-08-17T07:14:29.059Z</published>
     <updated>2019-08-17T07:14:29.060Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     

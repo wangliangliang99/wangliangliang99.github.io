@@ -41,14 +41,15 @@
     }
 </style>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.3.0">
   <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
 
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -62,7 +63,7 @@
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
@@ -73,7 +74,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -85,14 +86,14 @@
 </script>
 
   <meta name="description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
-<meta name="keywords" content="tags">
+<meta name="keywords" content="系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GoogleBBR">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/GoogleBBR/index.html">
 <meta property="og:site_name" content="王亮亮">
 <meta property="og:description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-19T09:13:18.784Z">
+<meta property="og:updated_time" content="2019-08-19T09:15:28.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GoogleBBR">
 <meta name="twitter:description" content="安装 Google BBR 加速VPS网络在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4">
@@ -223,9 +224,36 @@
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+      </li>
+    
   </ul>
 
 </nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup">
+  <div class="search-header">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <div class="search-input-wrapper">
+      <input autocomplete="off" autocorrect="off" autocapitalize="none"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="search-input">
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+  <div id="search-result"></div>
+</div>
+
+
+  </div>
 </div>
     </header>
 
@@ -251,8 +279,8 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/GoogleBBR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hunter">
-      <meta itemprop="description" content="亮亮永远就是这么亮">
+      <meta itemprop="name" content="Amy">
+      <meta itemprop="description" content="Foollow your heart">
       <meta itemprop="image" content="/images/Panda.png">
     </span>
 
@@ -276,7 +304,7 @@
                 
               
 
-              <time title="Created: 2019-08-19 16:54:47 / Modified: 17:13:18" itemprop="dateCreated datePublished" datetime="2019-08-19T16:54:47+08:00">2019-08-19</time>
+              <time title="Created: 2019-08-19 16:54:47 / Modified: 17:15:28" itemprop="dateCreated datePublished" datetime="2019-08-19T16:54:47+08:00">2019-08-19</time>
             </span>
           
             
@@ -284,6 +312,14 @@
             
           
 
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
         </div>
@@ -295,7 +331,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p>
+        <p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p><a id="more"></a>
 <p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p>
 <p>开启Google BBR<br>修改sysctl配置</p>
 <p>检查是否加载BBR</p>
@@ -308,6 +344,22 @@
     
         
       
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Amy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2019/08/19/GoogleBBR/" title="GoogleBBR">http://yoursite.com/2019/08/19/GoogleBBR/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+</div>
+
+      
 
       <footer class="post-footer">
           
@@ -315,7 +367,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/tags/" rel="tag"><i class="fa fa-tag"></i># tags</a>
+              <a href="/tags/系统/" rel="tag"><i class="fa fa-tag"></i># 系统</a>
             
           </div>
         
@@ -372,9 +424,9 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
       src="/images/Panda.png"
-      alt="Hunter">
-  <p class="site-author-name" itemprop="name">Hunter</p>
-  <div class="site-description motion-element" itemprop="description">亮亮永远就是这么亮</div>
+      alt="Amy">
+  <p class="site-author-name" itemprop="name">Amy</p>
+  <div class="site-description motion-element" itemprop="description">Foollow your heart</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
@@ -505,7 +557,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hunter</span>
+  <span class="author" itemprop="copyrightHolder">Amy</span>
 </div>
   <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
@@ -528,7 +580,14 @@
     </div>
   </div>
 </div>
+
+<span id="busuanzi_container_site_uv">
+  本站访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+</span>
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
 
 
 
@@ -552,6 +611,7 @@
 
   
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
@@ -580,6 +640,8 @@
 
 
 
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
