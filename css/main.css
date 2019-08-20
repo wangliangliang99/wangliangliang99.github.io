@@ -1788,7 +1788,7 @@ img:hover {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #864e54;
+  background: #ffbeff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2495,6 +2495,7 @@ ul.breadcrumb li+li:last-child {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
+    float: none;
     border-radius: initial;
     padding: 20px;
     width: 100%;
