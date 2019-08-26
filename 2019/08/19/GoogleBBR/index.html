@@ -207,7 +207,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(1)</small></div></li>
+    <li><div class="all active">全部文章<small>(2)</small></div></li>
     
 </ul>
 <div class="left-bottom">
@@ -219,7 +219,7 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1">
+<input type="hidden" id="yelog_site_posts_number" value="2">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -264,6 +264,14 @@
     <nav id="title-list-nav">
         
         <a  class=""
+           href="/2019/08/26/xss/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2019-08-26 09:57:09">2019/08/26</span>
+        </a>
+        
+        <a  class=""
            href="/2019/08/19/GoogleBBR/"
            data-tag="系统"
            data-author="" >
@@ -301,7 +309,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-20 17:24:43'>2019-08-19 16:54</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-26 10:05:16'>2019-08-19 16:54</time>
         
     </div>
     <div class="article-meta">
@@ -340,8 +348,7 @@
       
         <p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p>
 <p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p>
-<p>开启Google BBR<br>修改sysctl配置</p>
-<p>检查是否加载BBR</p>
+<p>开启Google BBR<br>修改sysctl配置<br>echo ‘ net.core.default_qdisc=fq’ | tee -a /etc/sysctl.conf<br>echo ‘ net.ipv4.tcp_congestion_contril=bbr’ | tee -a /etc/sysctl.conf<br>sysctl -p<br>检查是否加载BBR<br>lsmod | grep bbr</p>
 <p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>
 
       
@@ -360,7 +367,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
     <p><span class="copy-title">发布时间:</span>2019-08-19, 16:54:47</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-20, 17:24:43</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-26, 10:05:16</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/19/GoogleBBR/" title="GoogleBBR">http://yoursite.com/2019/08/19/GoogleBBR/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
