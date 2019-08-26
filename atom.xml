@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-26T02:05:16.617Z</updated>
+  <updated>2019-08-26T02:13:36.404Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>GoogleBBR</title>
-    <link href="http://yoursite.com/2019/08/19/GoogleBBR/"/>
-    <id>http://yoursite.com/2019/08/19/GoogleBBR/</id>
-    <published>2019-08-19T08:54:47.000Z</published>
-    <updated>2019-08-26T02:05:16.617Z</updated>
-    
-    <content type="html"><![CDATA[<p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p><p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p><p>开启Google BBR<br>修改sysctl配置<br>echo ‘ net.core.default_qdisc=fq’ | tee -a /etc/sysctl.conf<br>echo ‘ net.ipv4.tcp_congestion_contril=bbr’ | tee -a /etc/sysctl.conf<br>sysctl -p<br>检查是否加载BBR<br>lsmod | grep bbr</p><p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;安装 Google BBR 加速VPS网络&lt;br&gt;在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。
-      
-    
-    </summary>
-    
-    
-      <category term="系统" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
   
   <entry>
     <title>Centos7搭建xss平台</title>
@@ -53,6 +30,29 @@
       
       
         &lt;p&gt;所需环境&lt;br&gt;系统：centos7.x&lt;br&gt;Web容器：Apache&lt;br&gt;脚本语言：php&lt;br&gt;其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）&lt;br&gt;安装环境&lt;br&gt;安装Apache&lt;br&gt;yum install httpd -y //
+      
+    
+    </summary>
+    
+    
+      <category term="系统" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GoogleBBR</title>
+    <link href="http://yoursite.com/2019/08/19/GoogleBBR/"/>
+    <id>http://yoursite.com/2019/08/19/GoogleBBR/</id>
+    <published>2019-08-19T08:54:47.000Z</published>
+    <updated>2019-08-26T02:05:16.617Z</updated>
+    
+    <content type="html"><![CDATA[<p>安装 Google BBR 加速VPS网络<br>在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。在最新的Linux 4.9及以上的内核版本中已被采用。由于Google BBR非常新，任何低于4.9的linux内核版本都需要升级到4.9及以上才能使用，故若VPS本身内核版本较低的话，只有KVM架构的VPS才能使用本教程升级内核并使用，openvz的VPS用户若内核版本较低则无法使用！<br>先用 uname -r 查看一下自己内核的版本，如果内核版本在4.9.0以上，可以直接跳过本步骤，进入启用Google BBR步骤<br>升级内核<br>Rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>Rpm-Uvh <a href="http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-7.0-2.e17.elrepo.noarch.rpm</a><br>Yum –enablerepo=elrepo-kernel install kernel-ml -y<br>如果升级失败了就更新一下源，时间有点久需要慢慢等待。<br>yum update -y<br>运行rpm -qa | grep kernel，出现大于4.9.0的内核，就证明安装成功<br>设置开机默认开启项，输出结果如下</p><p>设置启动项<br>列表从0开始，所以新内核的索引为1<br>grub2-set-default 1<br>重启更新<br>Reboot<br>重新查看内核版本<br>Uname -r</p><p>开启Google BBR<br>修改sysctl配置<br>echo ‘ net.core.default_qdisc=fq’ | tee -a /etc/sysctl.conf<br>echo ‘ net.ipv4.tcp_congestion_contril=bbr’ | tee -a /etc/sysctl.conf<br>sysctl -p<br>检查是否加载BBR<br>lsmod | grep bbr</p><p>成功挂载完成<br>小提示：在系统还没进行任何操作的时候先拍摄快照，避免到时实验环境发生错误的时候浪费更多的时间去重新安装，快照可以帮助直接恢复到最初的实验环境，养成一些好的小习惯。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;安装 Google BBR 加速VPS网络&lt;br&gt;在使用Google BBR之前，我们首先要了解它是什么。了解计算机网络的人都知道，在TCP连接中，由于需要维持连接的可靠性，引入了拥塞控制和流量管理的方法。Google BBR就是谷歌公司提出的一个开源TCP拥塞控制的算法。
       
     
     </summary>
