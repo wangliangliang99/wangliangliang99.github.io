@@ -207,7 +207,23 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(3)</small></div></li>
+    <li><div class="all active">全部文章<small>(4)</small></div></li>
+    
+        
+            
+            <li><div data-rel="系统">系统<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
+                
+            </li>
+            
+        
     
 </ul>
 <div class="left-bottom">
@@ -219,7 +235,7 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_posts_number" value="4">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -254,11 +270,11 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">系统</a>
+        <a href="javascript:" class="color3">运维</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">Kali</a>
+        <a href="javascript:" class="color3">免杀</a>
     </li>
     
     <div class="clearfix"></div>
@@ -267,28 +283,36 @@
     
     <nav id="title-list-nav">
         
-        <a  class=""
-           href="/2019/08/28/Kali免杀一/"
-           data-tag="Kali"
+        <a  class="工具 "
+           href="/2019/08/30/Veil/"
+           data-tag="免杀"
            data-author="" >
-            <span class="post-title" title="免杀生成">免杀生成</span>
-            <span class="post-date" title="2019-08-28 16:54:47">2019/08/28</span>
+            <span class="post-title" title="Veil-Evasion">Veil-Evasion</span>
+            <span class="post-date" title="2019-08-30 10:29:32">2019/08/30</span>
         </a>
         
-        <a  class=""
+        <a  class="工具 "
+           href="/2019/08/28/Kali免杀一/"
+           data-tag="免杀"
+           data-author="" >
+            <span class="post-title" title="kali免杀">kali免杀</span>
+            <span class="post-date" title="2019-08-28 20:29:32">2019/08/28</span>
+        </a>
+        
+        <a  class="系统 "
            href="/2019/08/25/Centos7搭建xss平台/"
-           data-tag="系统"
+           data-tag="运维"
            data-author="" >
             <span class="post-title" title="Centos7搭建xss平台">Centos7搭建xss平台</span>
-            <span class="post-date" title="2019-08-25 20:54:47">2019/08/25</span>
+            <span class="post-date" title="2019-08-25 17:29:32">2019/08/25</span>
         </a>
         
-        <a  class=""
+        <a  class="系统 "
            href="/2019/08/19/GoogleBBR/"
-           data-tag="系统"
+           data-tag="运维"
            data-author="" >
             <span class="post-title" title="GoogleBBR">GoogleBBR</span>
-            <span class="post-date" title="2019-08-19 16:54:47">2019/08/19</span>
+            <span class="post-date" title="2019-08-19 15:29:32">2019/08/19</span>
         </a>
         
     </nav>
@@ -395,7 +419,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#系统','#Kali',],
+            'data': ['#运维','#免杀',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
