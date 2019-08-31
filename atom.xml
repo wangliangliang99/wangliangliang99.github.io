@@ -120,6 +120,32 @@
   </entry>
   
   <entry>
+    <title>MySQL安装</title>
+    <link href="http://yoursite.com/2019/08/31/mysql%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2019/08/31/mysql安装/</id>
+    <published>2019-08-31T07:29:32.000Z</published>
+    <updated>2019-08-31T15:19:47.311Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h1><p>tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz</p><h1 id="移动文件夹"><a href="#移动文件夹" class="headerlink" title="移动文件夹"></a>移动文件夹</h1><p>mv mysql-5.6.35-linux-glbc2.5-x86_64 /usr/local/mysql</p><h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p>useradd mysql</p><h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><p>mkidr /data</p><h1 id="初始化目录"><a href="#初始化目录" class="headerlink" title="初始化目录"></a>初始化目录</h1><p>cd /usr/local/mysql<br>./scripts/mysql_install_db –user=mysql –datadir=/data/mysql</p><h1 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h1><p>cp support - files/my-default.cnf /etc/my.cnf<br>cp support - files/mysql.server /etc/init.d/mysqld</p><h1 id="修改启动脚本"><a href="#修改启动脚本" class="headerlink" title="修改启动脚本"></a>修改启动脚本</h1><p>vim /etc/init.d/mysqld<br>46行<br>basedir=/usr/local/mysql<br>datadir=/data/mysql<br>启动mysql<br>/etc/init.d/mysqld start<br>或者<br>service mysqld start</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;解压文件&quot;&gt;&lt;a href=&quot;#解压文件&quot; class=&quot;headerlink&quot; title=&quot;解压文件&quot;&gt;&lt;/a&gt;解压文件&lt;/h1&gt;&lt;p&gt;tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz&lt;/p&gt;
+&lt;h1 id=
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
     <title>卸载工具</title>
     <link href="http://yoursite.com/2019/08/31/%E5%8D%B8%E8%BD%BD%E5%B7%A5%E5%85%B7%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%95%99%E4%B8%8B%E7%97%95%E8%BF%B9/"/>
     <id>http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</id>
