@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Centos7搭建xss平台 | 王亮亮</title>
-  <meta name="keywords" content=" 系统 ">
-  <meta name="description" content="Centos7搭建xss平台 | 王亮亮">
+  <title>卸载工具 | 王亮亮</title>
+  <meta name="keywords" content=" 共享 ">
+  <meta name="description" content="卸载工具 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介 王亮亮 毕业于广州工业，目前工作信息安全方向。 喜欢研究，渗透，网络，系统，编程新技术和未来发展。 最近 在出版完整渗透测试过程教学，请大家多多支持。 联系方式 QQ：1119098304邮箱：1119098304@qq.com">
 <meta property="og:type" content="website">
@@ -407,9 +407,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Centos7搭建xss平台" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-卸载工具完全不留下痕迹" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Centos7搭建xss平台</h1>
+        <h1 class="article-title">卸载工具</h1>
     
     <div class="article-meta">
         
@@ -417,21 +417,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>
+                <a href="javascript:" data-rel="资源">资源</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">系统</a>
+            <a href="javascript:" class="color3">共享</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-31 22:20:15'>2019-08-25 17:29</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-31 22:44:08'>2019-08-31 15:29</time>
         
     </div>
     <div class="article-meta">
@@ -453,7 +453,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#所需环境"><span class="toc-text">所需环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装环境"><span class="toc-text">安装环境</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#最强卸载工具-真正彻底不留垃圾"><span class="toc-text">最强卸载工具 真正彻底不留垃圾</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装步骤："><span class="toc-text">安装步骤：</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -468,8 +468,9 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="所需环境"><a href="#所需环境" class="headerlink" title="所需环境"></a>所需环境</h1><p>系统：centos7.x<br>Web容器：Apache<br>脚本语言：php<br>其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）</p>
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>安装Apache<br>yum install httpd -y //一定要加-y，不然有可能启动不了<br>启动Apache服务<br>systemctl start httpd.service //启动服务<br>systemctl stop httpd.service //关闭服务<br>systemctl restart httpd.service //重新启动服务<br>验证Apache<br>浏览器输入自己本机ip地址或者回环地址<br>设置开机启动Apache服务（个人需求来决定）<br>systemctl enable httpd.service //开机启动<br>systemctl disable httpd.service //开机不启动<br>安装PHP<br>yum install php -y<br>安装git工具<br>yum install git -y<br>删除Apache默认界面<br>rm -rf /var/www/* (rm -rf 目录路径 Linux常用删除命令）<br>在www目录下创建网站文件夹<br>mkdir /var/www/xss (mkdir 新目录路径 linux创建新目录）<br>从Github上获取xss平台源码<br>git clone <a href="https://github.com/firesunCN/BlueLotus_XSSReceiver.git" target="_blank" rel="noopener">https://github.com/firesunCN/BlueLotus_XSSReceiver.git</a> /var/www/xss/<br>获取xss平台源码的时候报错安装不了<br>查看下git版本，为1.8.x(默认yum源的版本)，故猜到为版本太低造成的问题。升级git最新版后再执行git pull<br>Sudo yum update nss curl (nss为名称解析和认证服务 curl为网络请求库）<br>赋予目录权限<br>Chmod -R 777 /var/www/xss/(chmod能改变权限 -R是目录下的所有权限，777就是最高权限）<br>配置Apache<br>新建虚拟主机的配置文件<br>mkdir /etc/httpd/conf/vhost （先新建一个文件夹）<br>touch /etc/httpd/conf/vhost/httpd-vhosts.conf (创建配置文件）<br>编辑虚拟文件<br>Vi /etc/httpd/conf/vhost/httpd-vhosts.conf<br>加入以下代码<br>&lt;VirtualHost *:80&gt;<br>DocumentRoot “/var/www/xss”<br>DirectoryIndex admin.php<br><virtualhost><br>将编辑的虚拟主机文件复制一份<br>cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak<br>编辑Apache配置文件httpd.conf<br>Vi /etc/httpd/conf/httpd.conf<br>修改DocumentRoot参数<br>“/var/www/xss”<br>修改optinos<br>optinos execcgi followsysmlinks<br>修改Allowoverride<br>all<br>文件结尾加一下语句，创建虚拟主机<br>Include /etc/httpd/conf/vhost/httpd-vhosts.conf<br>检测文件是否有错误<br>httpd -t<br>假如报错，请参考上面修改看看有没有错误，无法打开网页则添加一句<br>ServerName localhost:80<br>重新加载Apache配置文件<br>Systemctl start httpd<br>命令开放80端口<br>Firewall -cmd –zone=public –add-port=80/tcp –permanent<br>重新启动防火墙<br>Systemctl restart firewalld<br>浏览器访问服务器，安装<br>修改密码，其他可以默认，也可以根据需求来改<br>解决xss数据不可写问题<br>Vi /etc/selinux/config<br>加 SELINUX=disabled<br>其他全部注释</virtualhost></p>
+        <h1 id="最强卸载工具-真正彻底不留垃圾"><a href="#最强卸载工具-真正彻底不留垃圾" class="headerlink" title="最强卸载工具 真正彻底不留垃圾"></a>最强卸载工具 真正彻底不留垃圾</h1><p>Windows 在卸载软件时总是不够彻底干净，系统C盘总会留下大量难以辨别和清理的垃圾文件和临时文件，时间长了注册表也会变得臃肿，不仅浪费硬盘空间，同时也会明显拖慢系统响应和启动速度</p>
+<p>Revo Uninstaller Pro 是一款极为强大好用的专业级软件彻底卸载工具，拥有先进智能扫描算法，可在卸载软件同时更彻底地清除与之相关的垃圾/临时文件和注册表键值；它能强制卸载那些卸载错误的软件，也能通过监视软件安装过程来记录下系统更改之处，从而实现最干净的卸载。如果你希望系统保持干净快速稳定工作，Revo Uninstaller Pro 绝对是应该必备的神器</p>
+<h1 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h1><p>安装后不要立刻运行Revo Uninstaller Pro，将破解补丁复制到C:Program FilesVS Revo GroupRevo Uninstaller Pro目录下面，运行破解补丁，点击PATCH按钮，再输入任意名称即可注册。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -483,12 +484,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Centos7搭建xss平台</p>
+    <p><span class="copy-title">文章标题:</span>卸载工具</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-25, 17:29:32</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-31, 22:20:15</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/25/Centos7搭建xss平台/" title="Centos7搭建xss平台">http://yoursite.com/2019/08/25/Centos7搭建xss平台/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-31, 15:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-31, 22:44:08</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/31/卸载工具完全不留下痕迹/" title="卸载工具">http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
