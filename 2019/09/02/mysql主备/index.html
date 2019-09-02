@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>关于 | 王亮亮</title>
-  <meta name="keywords" content>
-  <meta name="description" content="关于 | 王亮亮">
+  <title>MySQL主备 | 王亮亮</title>
+  <meta name="keywords" content=" mysql ">
+  <meta name="description" content="MySQL主备 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介 王亮亮 毕业于广州工业，目前工作信息安全方向。 喜欢研究，渗透，网络，系统，编程新技术和未来发展。 最近 在出版完整渗透测试过程教学，请大家多多支持。 联系方式 QQ：1119098304邮箱：1119098304@qq.com">
 <meta property="og:type" content="website">
@@ -423,19 +423,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-mysql主备" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">关于</h1>
+        <h1 class="article-title">MySQL主备</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="数据库">数据库</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">mysql</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-20 16:49:21'>2019-08-20 16:41</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-02 19:10:25'>2019-09-02 11:29</time>
         
     </div>
     <div class="article-meta">
@@ -457,7 +469,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#主备配置"><span class="toc-text">主备配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主机-master"><span class="toc-text">主机(master)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#备机-slave"><span class="toc-text">备机(slave)</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -472,14 +484,9 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>个人简介</p>
-<p>王亮亮</p>
-<p>毕业于广州工业，目前工作信息安全方向。</p>
-<p>喜欢研究，渗透，网络，系统，编程新技术和未来发展。</p>
-<p>最近</p>
-<p>在出版完整渗透测试过程教学，请大家多多支持。</p>
-<p>联系方式</p>
-<p>QQ：1119098304<br>邮箱：<a href="mailto:1119098304@qq.com" target="_blank" rel="noopener">1119098304@qq.com</a></p>
+        <h1 id="主备配置"><a href="#主备配置" class="headerlink" title="主备配置"></a>主备配置</h1><p>网络ip地址划分:(根据自己实际情款去划分)<br>主机：master-192.168.56.154<br>备机：slave-192.168.56.153</p>
+<h1 id="主机-master"><a href="#主机-master" class="headerlink" title="主机(master)"></a>主机(master)</h1><p>在主机新建同步账户，用户可以自定义<br>mysql&gt; CREATE USER ‘slave’@’%’ IDENTIFIED BY ‘123456’;<br>mysql&gt; GRANT REPLICATION SLAVE, REPLICATION CLIENT ON <em>.</em> TO ‘slave’@’%’;<br>mysql&gt; flush privileges;<br>mysql&gt;<br>查看MySQL服务器二进制文件名与位置：<br>mysql&gt; SHOW MASTER STATUS;</p>
+<h1 id="备机-slave"><a href="#备机-slave" class="headerlink" title="备机(slave)"></a>备机(slave)</h1><p>在备机中告知主机的bin-log同步日志<br>mysql&gt; CHANGE MASTER TO<br>    -&gt; MASTER_HOST=’192.168.56.154’,<br>    -&gt; MASTER_USER=’slave’,<br>    -&gt; MASTER_PASSWORD=’123456’,<br>    -&gt; MASTER_LOG_FILE=’mysql-bin.000003’,<br>    -&gt; MASTER_LOG_POS=565;<br>在备机中启动复制进程<br>mysql&gt; start slave;<br>mysql&gt;SHOW SLAVE STATUS\G   查看主从复制是否成功配置<br>mysql&gt;<br>出现IO和SQL两个进程显示为YES即为同步成功。<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -491,6 +498,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>MySQL主备</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-09-02, 11:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-02, 19:10:25</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/02/mysql主备/" title="MySQL主备">http://yoursite.com/2019/09/02/mysql主备/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

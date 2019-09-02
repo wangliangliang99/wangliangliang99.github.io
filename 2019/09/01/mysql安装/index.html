@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>关于 | 王亮亮</title>
-  <meta name="keywords" content>
-  <meta name="description" content="关于 | 王亮亮">
+  <title>MySQL安装 | 王亮亮</title>
+  <meta name="keywords" content=" mysql ">
+  <meta name="description" content="MySQL安装 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介 王亮亮 毕业于广州工业，目前工作信息安全方向。 喜欢研究，渗透，网络，系统，编程新技术和未来发展。 最近 在出版完整渗透测试过程教学，请大家多多支持。 联系方式 QQ：1119098304邮箱：1119098304@qq.com">
 <meta property="og:type" content="website">
@@ -423,19 +423,31 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-mysql安装" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">关于</h1>
+        <h1 class="article-title">MySQL安装</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a href="javascript:" data-rel="数据库">数据库</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">mysql</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-20 16:49:21'>2019-08-20 16:41</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-02 19:11:28'>2019-09-01 15:29</time>
         
     </div>
     <div class="article-meta">
@@ -457,7 +469,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#解压文件"><span class="toc-text">解压文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#移动文件夹"><span class="toc-text">移动文件夹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建用户"><span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建目录"><span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化目录"><span class="toc-text">初始化目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#复制配置文件"><span class="toc-text">复制配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改启动脚本"><span class="toc-text">修改启动脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启动mysql"><span class="toc-text">启动mysql</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -472,14 +484,14 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>个人简介</p>
-<p>王亮亮</p>
-<p>毕业于广州工业，目前工作信息安全方向。</p>
-<p>喜欢研究，渗透，网络，系统，编程新技术和未来发展。</p>
-<p>最近</p>
-<p>在出版完整渗透测试过程教学，请大家多多支持。</p>
-<p>联系方式</p>
-<p>QQ：1119098304<br>邮箱：<a href="mailto:1119098304@qq.com" target="_blank" rel="noopener">1119098304@qq.com</a></p>
+        <h1 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h1><p>tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz</p>
+<h1 id="移动文件夹"><a href="#移动文件夹" class="headerlink" title="移动文件夹"></a>移动文件夹</h1><p>mv mysql-5.6.35-linux-glbc2.5-x86_64 /usr/local/mysql</p>
+<h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p>useradd mysql</p>
+<h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><p>mkidr /data</p>
+<h1 id="初始化目录"><a href="#初始化目录" class="headerlink" title="初始化目录"></a>初始化目录</h1><p>cd /usr/local/mysql<br>./scripts/mysql_install_db –user=mysql –datadir=/data/mysql</p>
+<h1 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h1><p>cp support - files/my-default.cnf /etc/my.cnf<br>cp support - files/mysql.server /etc/init.d/mysqld</p>
+<h1 id="修改启动脚本"><a href="#修改启动脚本" class="headerlink" title="修改启动脚本"></a>修改启动脚本</h1><p>vim /etc/init.d/mysqld<br>46行<br>basedir=/usr/local/mysql<br>datadir=/data/mysql</p>
+<h1 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h1><p>/etc/init.d/mysqld start<br>或者<br>service mysqld start</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -491,6 +503,18 @@
     <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>MySQL安装</p>
+    
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-09-01, 15:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-02, 19:11:28</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/01/mysql安装/" title="MySQL安装">http://yoursite.com/2019/09/01/mysql安装/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

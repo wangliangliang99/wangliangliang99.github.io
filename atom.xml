@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-31T14:41:17.424Z</updated>
+  <updated>2019-09-02T11:10:25.587Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL主备</title>
+    <link href="http://yoursite.com/2019/09/02/mysql%E4%B8%BB%E5%A4%87/"/>
+    <id>http://yoursite.com/2019/09/02/mysql主备/</id>
+    <published>2019-09-02T03:29:32.000Z</published>
+    <updated>2019-09-02T11:10:25.587Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="主备配置"><a href="#主备配置" class="headerlink" title="主备配置"></a>主备配置</h1><p>网络ip地址划分:(根据自己实际情款去划分)<br>主机：master-192.168.56.154<br>备机：slave-192.168.56.153</p><h1 id="主机-master"><a href="#主机-master" class="headerlink" title="主机(master)"></a>主机(master)</h1><p>在主机新建同步账户，用户可以自定义<br>mysql&gt; CREATE USER ‘slave’@’%’ IDENTIFIED BY ‘123456’;<br>mysql&gt; GRANT REPLICATION SLAVE, REPLICATION CLIENT ON <em>.</em> TO ‘slave’@’%’;<br>mysql&gt; flush privileges;<br>mysql&gt;<br>查看MySQL服务器二进制文件名与位置：<br>mysql&gt; SHOW MASTER STATUS;</p><h1 id="备机-slave"><a href="#备机-slave" class="headerlink" title="备机(slave)"></a>备机(slave)</h1><p>在备机中告知主机的bin-log同步日志<br>mysql&gt; CHANGE MASTER TO<br>    -&gt; MASTER_HOST=’192.168.56.154’,<br>    -&gt; MASTER_USER=’slave’,<br>    -&gt; MASTER_PASSWORD=’123456’,<br>    -&gt; MASTER_LOG_FILE=’mysql-bin.000003’,<br>    -&gt; MASTER_LOG_POS=565;<br>在备机中启动复制进程<br>mysql&gt; start slave;<br>mysql&gt;SHOW SLAVE STATUS\G   查看主从复制是否成功配置<br>mysql&gt;<br>出现IO和SQL两个进程显示为YES即为同步成功。<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;主备配置&quot;&gt;&lt;a href=&quot;#主备配置&quot; class=&quot;headerlink&quot; title=&quot;主备配置&quot;&gt;&lt;/a&gt;主备配置&lt;/h1&gt;&lt;p&gt;网络ip地址划分:(根据自己实际情款去划分)&lt;br&gt;主机：master-192.168.56.154&lt;br&gt;备机：slave
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL安装</title>
+    <link href="http://yoursite.com/2019/09/01/mysql%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2019/09/01/mysql安装/</id>
+    <published>2019-09-01T07:29:32.000Z</published>
+    <updated>2019-09-02T11:11:28.440Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h1><p>tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz</p><h1 id="移动文件夹"><a href="#移动文件夹" class="headerlink" title="移动文件夹"></a>移动文件夹</h1><p>mv mysql-5.6.35-linux-glbc2.5-x86_64 /usr/local/mysql</p><h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p>useradd mysql</p><h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><p>mkidr /data</p><h1 id="初始化目录"><a href="#初始化目录" class="headerlink" title="初始化目录"></a>初始化目录</h1><p>cd /usr/local/mysql<br>./scripts/mysql_install_db –user=mysql –datadir=/data/mysql</p><h1 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h1><p>cp support - files/my-default.cnf /etc/my.cnf<br>cp support - files/mysql.server /etc/init.d/mysqld</p><h1 id="修改启动脚本"><a href="#修改启动脚本" class="headerlink" title="修改启动脚本"></a>修改启动脚本</h1><p>vim /etc/init.d/mysqld<br>46行<br>basedir=/usr/local/mysql<br>datadir=/data/mysql</p><h1 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h1><p>/etc/init.d/mysqld start<br>或者<br>service mysqld start</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;解压文件&quot;&gt;&lt;a href=&quot;#解压文件&quot; class=&quot;headerlink&quot; title=&quot;解压文件&quot;&gt;&lt;/a&gt;解压文件&lt;/h1&gt;&lt;p&gt;tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz&lt;/p&gt;
+&lt;h1 id=
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>PDF转WORD破解</title>
@@ -95,57 +146,6 @@
   </entry>
   
   <entry>
-    <title>Python脚本</title>
-    <link href="http://yoursite.com/2019/08/31/python%E5%88%B7%E6%8A%96%E9%9F%B3%E8%AE%BF%E9%97%AE/"/>
-    <id>http://yoursite.com/2019/08/31/python刷抖音访问/</id>
-    <published>2019-08-31T07:29:32.000Z</published>
-    <updated>2019-08-31T14:31:41.546Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Python脚本抖音刷视频播放量"><a href="#Python脚本抖音刷视频播放量" class="headerlink" title="Python脚本抖音刷视频播放量"></a>Python脚本抖音刷视频播放量</h1><p>粘贴抖音链接，回车键挂机刷即可，因为是线程刷CPU会占用比较高</p><h1 id="链接地址"><a href="#链接地址" class="headerlink" title="链接地址"></a>链接地址</h1><p><a href="https://www.lanzous.com/i4w9m3a" target="_blank" rel="noopener">https://www.lanzous.com/i4w9m3a</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;a href=&quot;#Python脚本抖音刷视频播放量&quot; class=&quot;headerlink&quot; title=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;/a&gt;Python脚本抖音刷视频播放量&lt;/h1&gt;&lt;p&gt;粘贴抖音链接，回车键挂机刷即
-      
-    
-    </summary>
-    
-      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL安装</title>
-    <link href="http://yoursite.com/2019/08/31/mysql%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2019/08/31/mysql安装/</id>
-    <published>2019-08-31T07:29:32.000Z</published>
-    <updated>2019-08-31T15:19:47.311Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h1><p>tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz</p><h1 id="移动文件夹"><a href="#移动文件夹" class="headerlink" title="移动文件夹"></a>移动文件夹</h1><p>mv mysql-5.6.35-linux-glbc2.5-x86_64 /usr/local/mysql</p><h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p>useradd mysql</p><h1 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h1><p>mkidr /data</p><h1 id="初始化目录"><a href="#初始化目录" class="headerlink" title="初始化目录"></a>初始化目录</h1><p>cd /usr/local/mysql<br>./scripts/mysql_install_db –user=mysql –datadir=/data/mysql</p><h1 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h1><p>cp support - files/my-default.cnf /etc/my.cnf<br>cp support - files/mysql.server /etc/init.d/mysqld</p><h1 id="修改启动脚本"><a href="#修改启动脚本" class="headerlink" title="修改启动脚本"></a>修改启动脚本</h1><p>vim /etc/init.d/mysqld<br>46行<br>basedir=/usr/local/mysql<br>datadir=/data/mysql<br>启动mysql<br>/etc/init.d/mysqld start<br>或者<br>service mysqld start</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;解压文件&quot;&gt;&lt;a href=&quot;#解压文件&quot; class=&quot;headerlink&quot; title=&quot;解压文件&quot;&gt;&lt;/a&gt;解压文件&lt;/h1&gt;&lt;p&gt;tar zxvf mysql-5.6.35-linux-glibc2.5-x86_64.tar.gz&lt;/p&gt;
-&lt;h1 id=
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
     <title>卸载工具</title>
     <link href="http://yoursite.com/2019/08/31/%E5%8D%B8%E8%BD%BD%E5%B7%A5%E5%85%B7%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%95%99%E4%B8%8B%E7%97%95%E8%BF%B9/"/>
     <id>http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</id>
@@ -159,6 +159,31 @@
       
       
         &lt;h1 id=&quot;最强卸载工具-真正彻底不留垃圾&quot;&gt;&lt;a href=&quot;#最强卸载工具-真正彻底不留垃圾&quot; class=&quot;headerlink&quot; title=&quot;最强卸载工具 真正彻底不留垃圾&quot;&gt;&lt;/a&gt;最强卸载工具 真正彻底不留垃圾&lt;/h1&gt;&lt;p&gt;Windows 在卸载软件时总是不够
+      
+    
+    </summary>
+    
+      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python脚本</title>
+    <link href="http://yoursite.com/2019/08/31/python%E5%88%B7%E6%8A%96%E9%9F%B3%E8%AE%BF%E9%97%AE/"/>
+    <id>http://yoursite.com/2019/08/31/python刷抖音访问/</id>
+    <published>2019-08-31T07:29:32.000Z</published>
+    <updated>2019-08-31T14:31:41.546Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python脚本抖音刷视频播放量"><a href="#Python脚本抖音刷视频播放量" class="headerlink" title="Python脚本抖音刷视频播放量"></a>Python脚本抖音刷视频播放量</h1><p>粘贴抖音链接，回车键挂机刷即可，因为是线程刷CPU会占用比较高</p><h1 id="链接地址"><a href="#链接地址" class="headerlink" title="链接地址"></a>链接地址</h1><p><a href="https://www.lanzous.com/i4w9m3a" target="_blank" rel="noopener">https://www.lanzous.com/i4w9m3a</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;a href=&quot;#Python脚本抖音刷视频播放量&quot; class=&quot;headerlink&quot; title=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;/a&gt;Python脚本抖音刷视频播放量&lt;/h1&gt;&lt;p&gt;粘贴抖音链接，回车键挂机刷即
       
     
     </summary>
